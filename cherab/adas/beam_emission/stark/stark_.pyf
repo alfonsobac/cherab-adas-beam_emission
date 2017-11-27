@@ -1,0 +1,64 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module stark_ ! in 
+    interface  ! in :stark_
+        subroutine stark(amdeut,amss,bener,dv1,dv2,dv3,densb,bmag,db1,db2,db3,emag,de1,de2,de3,do1,do2,do3,polo,polp,dens,te,zeff,nu,nl,popu,ndcomp,ncomp,wvcomp,emcomp) ! in :stark_: fortran/adas3xx/adas305/stark.for
+            real*8 :: amdeut
+            real*8 :: amss
+            real*8 :: bener
+            real*8 :: dv1
+            real*8 :: dv2
+            real*8 :: dv3
+            real*8 :: densb
+            real*8 :: bmag
+            real*8 :: db1
+            real*8 :: db2
+            real*8 :: db3
+            real*8 :: emag
+            real*8 :: de1
+            real*8 :: de2
+            real*8 :: de3
+            real*8 :: do1
+            real*8 :: do2
+            real*8 :: do3
+            real*8 :: polo
+            real*8 :: polp
+            real*8 :: dens
+            real*8 :: te
+            real*8 :: zeff
+            integer :: nu
+            integer :: nl
+            real*8 :: popu
+            integer, optional,check(len(wvcomp)>=ndcomp),depend(wvcomp) :: ndcomp=len(wvcomp)
+            integer intent(out) :: ncomp
+            real*8 dimension(ndcomp), intent(in, out) :: wvcomp
+            real*8 dimension(ndcomp),depend(ndcomp), intent(in, out) :: emcomp
+            real*8, optional,dimension(10) :: wf=3.08441d-1
+            real*8, optional,dimension(10) :: xf= 4.01119d-1 
+            real*8, optional,dimension(10) :: bd_f=3.0727
+            real*8 dimension(10) :: bd_b
+            real*8 dimension(10) :: bd_h
+            real*8, optional,dimension(10) :: bd_abeta=0.02
+            real*8 dimension(66) :: estk
+            real*8 dimension(66,66) :: ak
+            real*8 dimension(60,60) :: xborn
+            real*8 dimension(66) :: bk
+            integer dimension(66) :: na
+            integer :: imax
+            integer :: imaxb
+            real*8 :: ebeam
+            real*8 :: te_c
+            real*8 :: dens_c
+            real*8 :: zeff_c
+            integer :: mu
+            common /ap/ wf,xf
+            common /aprx/ bd_f,bd_b,bd_h,bd_abeta
+            common /adat/ estk,ak,xborn,bk,na,imax,imaxb
+            common /pldat/ ebeam,te_c,dens_c,zeff_c,mu
+        end subroutine stark
+    end interface 
+end python module stark_
+
+! This file was auto-generated with f2py (version:2).
+! See http://cens.ioc.ee/projects/f2py2e/

@@ -1,0 +1,10 @@
+syntax:glob
+
+build/
+*.c
+*.so
+*.o
+*.pyc
+*.pyo
+*.f
+*.png

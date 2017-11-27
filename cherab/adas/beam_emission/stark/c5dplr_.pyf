@@ -1,0 +1,23 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module c5dplr_ ! in 
+    interface  ! in :c5dplr_
+        subroutine c5dplr(ndpix,npix,wvmin,wvmax,ndcomp,ncomp,wvcomp,emcomp,tev,amss,total) ! in :c5dplr_: fortran/adas3xx/adas305/c5dplr.for
+            integer, optional,check(len(total)>=ndpix),depend(total) :: ndpix=len(total)
+            integer :: npix
+            real*8 :: wvmin
+            real*8 :: wvmax
+            integer, optional,check(len(wvcomp)>=ndcomp),depend(wvcomp) :: ndcomp=len(wvcomp)
+            integer :: ncomp
+            real*8 dimension(ndcomp) :: wvcomp
+            real*8 dimension(ndcomp),depend(ndcomp) :: emcomp
+            real*8 :: tev
+            real*8 :: amss
+            real*8 dimension(ndpix), intent(in, out) :: total
+        end subroutine c5dplr
+    end interface 
+end python module c5dplr_
+
+! This file was auto-generated with f2py (version:2).
+! See http://cens.ioc.ee/projects/f2py2e/
